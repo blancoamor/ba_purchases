@@ -17,6 +17,11 @@ class purchase_order_line(models.Model):
 
 	@api.one
 	def _compute_delivered_qty(self):
-		self.delivered = 0
+		return_value = 0
+		if self.move_ids:
+			for stock_move in self.move_ids:
+				if stock_move.state == 'done':
+					return_value = return_value + stock_move.product_qty
+		self.delivered = return_value
 
 	delivered = fields.Integer(string='Entregados',compute=_compute_delivered_qty)
