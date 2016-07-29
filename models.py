@@ -29,7 +29,7 @@ class purchase_order_line(models.Model):
 		return_value = 0
 		if self.invoice_lines:
 			for invoice_line in self.invoice_lines:
-				if invoice_line.state in ['open','paid']:
+				if invoice_line.invoice_id.state in ['open','paid']:
 					return_value = return_value + invoice_line.quantity
 		self.invoiced = return_value		
 
