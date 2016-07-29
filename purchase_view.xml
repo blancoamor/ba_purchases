@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@string='Products']/field[@name='order_line']/tree[@string='Purchase Order Lines']/field[@name='date_planned']" position="after">
                         <field name="delivered" />
+                        <field name="invoiced" />
                 </xpath>
 	    </field>
 	</record>

@@ -24,4 +24,14 @@ class purchase_order_line(models.Model):
 					return_value = return_value + stock_move.product_qty
 		self.delivered = return_value
 
+	@api.one
+	def _compute_invoiced_qty(self):
+		return_value = 0
+		if self.invoice_lines:
+			for invoice_line in self.invoice_lines:
+				if invoice_line.state in ['open','paid']:
+					return_value = return_value + invoice_line.quantity
+		self.invoiced = return_value		
+
 	delivered = fields.Integer(string='Entregados',compute=_compute_delivered_qty)
+	invoiced = fields.Integer(string='Facturados',compute=_compute_invoiced_qty)
