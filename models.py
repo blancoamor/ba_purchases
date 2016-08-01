@@ -32,8 +32,17 @@ class purchase_order(models.Model):
 				return_value = False
 		self.match_invoiced = return_value
 
+	@api.one
+	def _compute_match_invoiced_amount(self):
+		return_value = True
+		for line in self.order_line:
+			if line.product_qty * line.product_qty != line.invoiced_amount:
+				return_value = False
+		self.match_invoiced = return_value
+
 	match_delivered = fields.Boolean('Coinciden Entregas',compute=_compute_match_delivered)
 	match_invoiced = fields.Boolean('Coinciden Facturas',compute=_compute_match_invoiced)
+	match_invoiced_amount = fields.Boolean('Coinciden Montos Facturados',compute=_compute_match_invoiced_amount)
 
 class purchase_order_line(models.Model):
 	_inherit = 'purchase.order.line'
