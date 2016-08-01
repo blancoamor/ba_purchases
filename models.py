@@ -67,4 +67,4 @@ class purchase_order_line(models.Model):
 
 	delivered = fields.Integer(string='Entregados',compute=_compute_delivered_qty)
 	invoiced = fields.Integer(string='Facturados',compute=_compute_invoiced_qty)
-	amount_invoiced = fields.Float(string='Monto facturado',compute=_compute_invoiced_amount)
+	invoiced_amount = fields.Float(string='Monto facturado',compute=_compute_invoiced_amount)
