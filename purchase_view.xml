@@ -10,6 +10,7 @@
                 <xpath expr="//page[@string='Products']/field[@name='order_line']/tree[@string='Purchase Order Lines']/field[@name='date_planned']" position="after">
                         <field name="delivered" />
                         <field name="invoiced" />
+                        <field name="invoiced_amount" />
                 </xpath>
 		<page string="Products" position="after">
 			<page string="Blancoamor">
