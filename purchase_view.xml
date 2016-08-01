@@ -11,6 +11,13 @@
                         <field name="delivered" />
                         <field name="invoiced" />
                 </xpath>
+		<page string="Products" position="after">
+			<page string="Blancoamor">
+				<group string="Facturas y entregas">
+					<field name="match_delivered" />
+				</group>
+			</page>
+		</page>
 	    </field>
 	</record>
 
