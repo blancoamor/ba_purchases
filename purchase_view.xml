@@ -15,6 +15,7 @@
 			<page string="Blancoamor">
 				<group string="Facturas y entregas">
 					<field name="match_delivered" />
+					<field name="match_invoiced" />
 				</group>
 			</page>
 		</page>
