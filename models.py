@@ -12,6 +12,20 @@ from datetime import datetime
 #Get the logger
 _logger = logging.getLogger(__name__)
 
+
+class purchase_order(models.Model):
+	_inherit = 'purchase.order'
+
+	@api.one
+	def _compute_match_delivered(self):
+		return_value = True
+		for line in self.order_line:
+			if line.product_qty != line.delivered:
+				return_value = False
+		self.match_delivered = return_value
+
+	match_delivered = fields.Boolean('Coinciden Entregas',compute=_compute_match_delivered)
+
 class purchase_order_line(models.Model):
 	_inherit = 'purchase.order.line'
 
