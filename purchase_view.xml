@@ -17,6 +17,7 @@
 				<group string="Facturas y entregas">
 					<field name="match_delivered" />
 					<field name="match_invoiced" />
+					<field name="match_invoiced_amount" />
 				</group>
 			</page>
 		</page>
